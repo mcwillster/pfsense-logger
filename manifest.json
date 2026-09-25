@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "pfSense Session Logger",
+  "version": "1.0",
+  "description": "Logs the pfSense PHPSESSID cookie upon login.",
+  "permissions": [
+    "cookies"
+  ],
+  "host_permissions": [
+    "*://192.168.1.1/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
