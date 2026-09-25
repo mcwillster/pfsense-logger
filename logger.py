@@ -8,6 +8,7 @@ class LogHandler(BaseHTTPRequestHandler):
         session_id = urllib.parse.parse_qs(post_data).get('session', [''])[0]
         
         if session_id:
+            print("Session ID Received")
             with open("pfsense_master_log.txt", "a") as log:
                 log.write(f"Session ID: {session_id}\n")
                 
@@ -15,4 +16,5 @@ class LogHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
 # Starts a quiet local server
+print("Starting Server")
 HTTPServer(('localhost', 8000), LogHandler).serve_forever()
