@@ -7,7 +7,7 @@
     "cookies"
   ],
   "host_permissions": [
-    "*://192.168.1.1/*"
+    "*://192.168.1.254/*"
   ],
   "background": {
     "scripts": ["background.js"]
