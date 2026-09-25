@@ -1,4 +1,4 @@
-const PFSENSE_IP = "192.168.1.1";
+const PFSENSE_IP = "192.168.1.254";
 
 browser.cookies.onChanged.addListener((changeInfo) => {
     const cookie = changeInfo.cookie;
