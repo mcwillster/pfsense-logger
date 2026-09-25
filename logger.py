@@ -6,11 +6,14 @@ class LogHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length).decode('utf-8')
         session_id = urllib.parse.parse_qs(post_data).get('session', [''])[0]
+        client_ip = self.client_address[0]
         
         if session_id:
             print("Session ID Received")
             with open("pfsense_master_log.txt", "a") as log:
-                log.write(f"Session ID: {session_id}\n")
+                log.write(f"\nSession ID: {session_id}")
+                if (client_ip):
+                    log.write(f" | Client IP: {client_ip}")
                 
             self.send_response(200)
             self.end_headers()

