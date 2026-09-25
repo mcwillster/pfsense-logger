@@ -1,21 +1,24 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import urllib.parse
+import sqlworker
 
 class LogHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length).decode('utf-8')
-        session_id = urllib.parse.parse_qs(post_data).get('session', [''])[0]
+        parsed_data = urllib.parse.parse_qs(post_data)
+        session_id = parsed_data.get('session', [''])[0]
+        pfsense_ip = parsed_data.get('pfsense_ip', [''])[0]
         client_ip = self.client_address[0]
         
         if session_id:
             print("Session ID Received")
-            with open("pfsense_master_log.txt", "a") as log:
-                log.write(f"\nSession ID: {session_id}")
-                if (client_ip):
-                    log.write(f" | Client IP: {client_ip}")
+            sqlworker.insert(client_ip, pfsense_ip, session_id)
                 
             self.send_response(200)
+            self.end_headers()
+        else:
+            self.send_error()
             self.end_headers()
 
 # Starts a quiet local server
