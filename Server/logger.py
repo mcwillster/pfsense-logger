@@ -1,4 +1,4 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import urllib.parse
 import sqlworker
 
@@ -18,8 +18,11 @@ class LogHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.end_headers()
         else:
-            self.send_error()
-            self.end_headers()
+            self.send_error(400, "Bad Request: Missing session ID")
 
-print("Starting Server")
-HTTPServer(('localhost', 7777), LogHandler).serve_forever()
+def main():
+    print("Starting Server")
+    ThreadingHTTPServer(('localhost', 7777), LogHandler).serve_forever()
+
+if __name__ == "__main__":
+    main()
