@@ -15,7 +15,7 @@ browser.cookies.onChanged.addListener((changeInfo) => {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: `session=${encodeURIComponent(sessionId)} & pfsense_ip=${encodeURIComponent(PFSENSE_IP)}`
+            body: `session=${encodeURIComponent(sessionId)}&pfsense_ip=${encodeURIComponent(PFSENSE_IP)}`
         }).catch(err => console.error("Python logger not running.", err));
     }
 });
