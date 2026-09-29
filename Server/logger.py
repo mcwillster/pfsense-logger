@@ -22,4 +22,4 @@ class LogHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
 print("Starting Server")
-HTTPServer(('localhost', 8000), LogHandler).serve_forever()
+HTTPServer(('localhost', 7777), LogHandler).serve_forever()

@@ -1,4 +1,4 @@
-const SERVER_IP = "http://localhost:8000"
+const SERVER_IP = "http://localhost:7777"
 
 browser.cookies.onChanged.addListener((changeInfo) => {
     const cookie = changeInfo.cookie;
