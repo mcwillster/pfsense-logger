@@ -14,11 +14,9 @@ class LogHandler(BaseHTTPRequestHandler):
         if session_id:
             print("Session ID Received")
             sqlworker.insert(client_ip, pfsense_ip, session_id)
-            print("1")
+            print(pfsense_ip)
             self.send_response(200)
-            print("2")
             self.end_headers()
-            print("3")
         else:
             self.send_error()
             self.end_headers()
