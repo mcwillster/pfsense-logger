@@ -1,10 +1,12 @@
 import sqlite3
 
+DATABASE_FILEPATH = "pfsense_session_IDs.db"
+
 #Function to insert an entry in my pfsense master database
 def insert(client_ip, pfsense_ip, session_id):
 
     #setup: connect to database, then make cursor, and split apart pfsense_ip to get table_name
-    connection = sqlite3.connect("pfsense_session_IDs.db")
+    connection = sqlite3.connect(DATABASE_FILEPATH)
     cursor = connection.cursor()
     ip_lst = pfsense_ip.split('.')
     table_name = "Team " + ip_lst[2]
