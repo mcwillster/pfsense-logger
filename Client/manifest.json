@@ -5,7 +5,7 @@
   "description": "Logs the pfSense PHPSESSID cookie upon login.",
   "browser_specific_settings": {
     "gecko": {
-      "id": "william.sionkiewicz@gmail.com",
+      "id": "pfsense_logger@bithavenbuffalo.com",
       "strict_min_version": "140.0",
       "data_collection_permissions": {
         "required": ["none"]
@@ -13,7 +13,8 @@
     }
   },
   "permissions": [
-    "cookies"
+    "cookies",
+    "storage"
   ],
   "host_permissions": [
     "*://192.168.1.254/*"

@@ -1,0 +1,8 @@
+{
+  "name": "pfsense_logger@bithavenbuffalo.com",
+  "description": "Server Configuration Settings",
+  "type": "storage",
+  "data": {
+    "server_ip": "http://192.168.1.11:7777"
+  }
+}
