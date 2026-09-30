@@ -22,7 +22,7 @@ class LogHandler(BaseHTTPRequestHandler):
 
 def main():
     print("Starting Server")
-    ThreadingHTTPServer(('localhost', 7777), LogHandler).serve_forever()
+    ThreadingHTTPServer(('', 7777), LogHandler).serve_forever()
 
 if __name__ == "__main__":
     main()

