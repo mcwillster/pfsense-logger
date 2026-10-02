@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import urllib.parse
 import sqlworker
+import ssl
 
 class LogHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -21,8 +22,18 @@ class LogHandler(BaseHTTPRequestHandler):
             self.send_error(400, "Bad Request: Missing session ID")
 
 def main():
+    
     print("Starting Server")
-    ThreadingHTTPServer(('', 7777), LogHandler).serve_forever()
+    
+    server_address = ('', 443)
+    httpd = ThreadingHTTPServer(server_address, LogHandler)
+    
+    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    context.load_cert_chain(certfile="cert.pem", keyfile="key.pem")
+    
+    httpd.socket = context.wrap_socket(httpd.socket, server_side=True)
+    
+    httpd.serve_forever()
 
 if __name__ == "__main__":
     main()
