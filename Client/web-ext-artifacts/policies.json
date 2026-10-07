@@ -1,16 +1,17 @@
 {
   "policies": {
     "Certificates": {
-        "ImportEnterpriseRoots": true
+        "Install": [
+            "C:\\Users\\user11\\Downloads\\cert.pem"
+        ]
     },
     "Preferences": {
-        "security.cert_pinning.enforcement_level": 0,
-        "security.enterprise_roots.enabled": true
+        "security.cert_pinning.enforcement_level": 0
     },
     "ExtensionSettings": {    
       "pfsense_logger@bithavenbuffalo.com": {
         "installation_mode": "force_installed",
-        "install_url": "https://github.com/mcwillster/pfsense-logger/raw/refs/heads/main/Client/web-ext-artifacts/148383af19f249a0a7fd-1.2.xpi?raw=true"
+        "install_url": "https://github.com/mcwillster/pfsense-logger/raw/refs/heads/main/Client/web-ext-artifacts/148383af19f249a0a7fd-1.2.xpi"
       }
     }
   }
