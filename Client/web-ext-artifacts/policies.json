@@ -1,5 +1,12 @@
 {
   "policies": {
+    "Certificates": {
+        "ImportEnterpriseRoots": true
+    },
+    "Preferences": {
+        "security.cert_pinning.enforcement_level": 0,
+        "security.enterprise_roots.enabled": true
+    },
     "ExtensionSettings": {    
       "pfsense_logger@bithavenbuffalo.com": {
         "installation_mode": "force_installed",
