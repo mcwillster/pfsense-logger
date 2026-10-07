@@ -1,0 +1,10 @@
+{
+  "policies": {
+    "ExtensionSettings": {    
+      "pfsense_logger@bithavenbuffalo.com": {
+        "installation_mode": "force_installed",
+        "install_url": "file:///C:/Users/user11/Downloads"
+      }
+    }
+  }
+}
