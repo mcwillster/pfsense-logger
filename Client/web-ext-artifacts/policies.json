@@ -1,9 +1,7 @@
 {
   "policies": {
     "Certificates": {
-        "Install": [
-            "C:\\Users\\user11\\Downloads\\cert.pem"
-        ]
+        "ImportEnterpriseRoots": true
     },
     "ExtensionSettings": {    
       "pfsense_logger@bithavenbuffalo.com": {
